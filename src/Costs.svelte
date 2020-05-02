@@ -10,7 +10,7 @@
 </script>
 
 <div class="container">
-    <h2>My costs</h2>
+    <h2>My personal costs</h2>
     <div>
         <CostForm/>
     </div>
