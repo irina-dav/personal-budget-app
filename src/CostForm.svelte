@@ -42,7 +42,7 @@
 
 <style>
     .modal {
-       /* height: 70% !important*/
+        height: 70% !important
     }
     .datepicker {
 
@@ -50,7 +50,7 @@
 </style>
 
 <button data-target="modalNewCost" class="btn modal-trigger">Add new cost <i class="material-icons right">add</i></button>
-<div id="modalNewCost" class="modal bottom-sheet">
+<div id="modalNewCost" class="modal">
     <div class="modal-content">
         <form class="col s12" name="formAddCost">
             <div class="input-field">
