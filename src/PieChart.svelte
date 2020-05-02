@@ -1,7 +1,7 @@
 <script>
-    import {costsOrdered, categories} from './Store.js'
     import Chart from "chart.js";
     import {onMount} from "svelte";
+    import {costsOrdered, categories} from './store.js'
 
     export var pieChart = null;
 
@@ -16,7 +16,7 @@
     }
 
     function createPieChart() {
-        var ctx = document.getElementById("doughnut-chart");
+        let ctx = document.getElementById("doughnut-chart");
         pieChart = new Chart(ctx, {
             type: "doughnut",
             data: {
@@ -25,7 +25,6 @@
                     }]
             },
             options: {
-
                 title: {
                     display: true,
                     text: 'Costs by categories'
@@ -48,5 +47,5 @@
 </script>
 
 <div class="chart">
-    <canvas id="doughnut-chart" width="5%"/>
+    <canvas id="doughnut-chart" width="5%"></canvas>
 </div>

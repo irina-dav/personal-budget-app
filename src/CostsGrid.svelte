@@ -1,14 +1,15 @@
 <script>
-    import {categories, costsOrdered} from './Store.js';
     import moment from 'moment';
     import {paginate, LightPaginationNav} from 'svelte-paginate'
+    import {categories, costsOrdered} from './store.js';
+    import {DATE_FORMAT_MOMENT} from './appSettings'
 
-    $:  items = $costsOrdered
     let currentPage = 1
     let pageSize = 10
+    $: items = $costsOrdered
     $: paginatedItems = paginate({items, pageSize, currentPage})
-
 </script>
+
 <table>
     <thead>
     <tr>
@@ -22,7 +23,7 @@
     {#each paginatedItems as cost, idx}
         <tr>
             <td>{(currentPage - 1)*pageSize + idx + 1}</td>
-            <td>{moment(cost.date).format('DD.MM.yyyy')}</td>
+            <td>{moment(cost.date).format(DATE_FORMAT_MOMENT)}</td>
             <td>{$categories.find(c => +c.id === +cost.category).name}</td>
             <td>{cost.value}</td>
         </tr>
@@ -35,5 +36,4 @@
         currentPage="{currentPage}"
         limit="{1}"
         showStepOptions="{true}"
-        on:setPage="{(e) => currentPage = e.detail.page}"
-/>
+        on:setPage="{(e) => currentPage = e.detail.page}"/>

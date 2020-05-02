@@ -17,14 +17,13 @@ let costsArr = generateData();
 
 const costsWr = writable(costsArr);
 
-const costs = {
+export const costs = {
     subscribe: costsWr.subscribe,
     addCost: cost => {
         cost.id = ++lastIndex;
         costsWr.update(arr => [...arr, cost])},
 };
 
-export default costs;
 export const categories = writable(categoriesArr);
 export const costsOrdered = derived(costsWr, (costsWr) => costsWr.sort((a,b) => new Date(b.date) - new Date(a.date)));
 

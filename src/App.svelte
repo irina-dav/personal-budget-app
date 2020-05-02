@@ -1,5 +1,5 @@
 <script>
-	import Costs from './Costs.svelte'
+	import CostsMain from './CostsMain.svelte'
 </script>
 
-<Costs />
+<CostsMain />

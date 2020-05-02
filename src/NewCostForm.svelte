@@ -1,16 +1,15 @@
 <script>
-    import costs, { categories} from './Store.js';
-    import {onMount} from "svelte";
     import moment from 'moment';
+    import {DATE_FORMAT, DATE_FORMAT_MOMENT} from './appSettings'
+    import {costs, categories} from './store.js';
+    import {onMount} from "svelte";
 
     let errors = {};
-    const DATE_FORMAT = "dd.mm.yyyy";
-    const DATE_FORMAT_MOMENTO = "DD.MM.yyyy";
 
     onMount(async () => {
-        var elemSelects = document.querySelectorAll('select');
-        var elemDatePickers = document.querySelectorAll('.datepicker');
-        var elemModals = document.querySelectorAll('.modal');
+        let elemSelects = document.querySelectorAll('select');
+        let elemDatePickers = document.querySelectorAll('.datepicker');
+        let elemModals = document.querySelectorAll('.modal');
         M.FormSelect.init(elemSelects, {container: 'body'});
         M.Datepicker.init(elemDatePickers, {container: 'body', format: DATE_FORMAT, defaultDate: new Date(), setDefaultDate: true});
         M.Modal.init(elemModals);
@@ -20,7 +19,7 @@
         errors = {};
         const formData = new FormData(document.forms.formAddCost);
         let newCost = {
-            date: moment(formData.get("cost-date"), DATE_FORMAT_MOMENTO).format(),
+            date: moment(formData.get("cost-date"), DATE_FORMAT_MOMENT).format(),
             category: formData.get("cost-category"),
             value: formData.get("cost-value")
         }
